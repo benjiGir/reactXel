@@ -1,7 +1,7 @@
 import { on } from 'events';
 import { useState } from 'react'
 
-import { useStore } from '../../store/color.store'
+import { useColorStore } from '../../store/store'
 
 import './pixel.scss'
 
@@ -14,7 +14,7 @@ interface IPixel {
 function Pixel({ x, y, color }: IPixel): JSX.Element {
   const [ currentColor, setCurrentColor ] = useState<string>()
   const [ opacity, setOpacity ] = useState<number>()
-  const paintColor = useStore((state) => state.paintColor)
+  const paintColor = useColorStore((state) => state.paintColor)
 
   const setColor = () => {
     setCurrentColor(paintColor)
