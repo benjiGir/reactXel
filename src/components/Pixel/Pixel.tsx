@@ -1,17 +1,14 @@
-import { on } from 'events';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useColorStore } from '../../store/store'
 
 import './pixel.scss'
 
 interface IPixel {
-    x: number;
-    y: number;
     color: string
 }
 
-function Pixel({ x, y, color }: IPixel): JSX.Element {
+function Pixel({ color }: IPixel): JSX.Element {
   const [ currentColor, setCurrentColor ] = useState<string>()
   const [ opacity, setOpacity ] = useState<number>()
   const paintColor = useColorStore((state) => state.paintColor)
@@ -22,7 +19,7 @@ function Pixel({ x, y, color }: IPixel): JSX.Element {
   }
 
   const eraseColor = () => {
-    setOpacity(0)
+    setCurrentColor('#fff')
   }
 
   const onClick = (event: any) => {
@@ -51,19 +48,15 @@ function Pixel({ x, y, color }: IPixel): JSX.Element {
     }
   }
 
+  useEffect(() => {
+    setCurrentColor(color)
+  }, [])
+
   return (
     <>
-      <div
+      <div 
         className='pixel'
         style={{
-          boxShadow: `${x}rem ${y}rem 0 -0.05rem ${color}`
-        }}
-      />
-      <div 
-        className='pixel hover-pixel'
-        style={{
-          top: `${y}rem`,
-          left: `${x}rem`,
           backgroundColor: currentColor,
           opacity: opacity
         }}

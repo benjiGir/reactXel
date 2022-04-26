@@ -1,27 +1,26 @@
 import { useEffect, useState } from 'react'
-import Pixel from '../Pixel/Pixel'
+import { useGridStore } from '../../store/store'
+import Row from '../Row/Row'
 
 import './grid.scss'
 
-
-function Grid({ x = 16, y = 16 }): JSX.Element {
-  const [ pixels, setPixels ] = useState<Array<JSX.Element>>([])
+function Grid(): JSX.Element {
+  const [ rows, setRows ] = useState<Array<JSX.Element>>([])
+  const y = useGridStore((state) => state.y)
 
   useEffect(() => {
-    const grid: typeof pixels = []
+    const grid: typeof rows = []
 
-    for (let i = 1; i < x; i++) {
-      for (let j = 1; j < y; j++) {
-        grid.push(<Pixel x={i} y={j} color='#fff' />)
-      }
-
-      setPixels(grid)
+    for (let i = 0; i < y; i++) {
+      grid.push(<Row key={i} />)
     }
-  }, [x, y])
+
+    setRows(grid)
+  }, [y])
 
   return (
     <div className='grid'>
-      {pixels}
+      {rows}
     </div>
   )
 }

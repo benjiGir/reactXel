@@ -1,5 +1,7 @@
 .drawscene {
-  width: 20vw;
-  height: 15vh;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
   background-color: grey;
+  padding: 1rem;
 }

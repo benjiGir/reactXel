@@ -1,18 +1,18 @@
 import create, { GetState, SetState } from 'zustand'
 
-interface Color {
+interface IColor {
   paintColor: string;
   setPaintColor: (selectedColor: string) => void;
 }
 
-interface Grid {
+interface IGrid {
   x: number;
   y: number;
   setX: (clientX: number) => void;
   setY: (clientY: number) => void;
 }
 
-export const useColorStore = create<Color>((set: SetState<Color>, get: GetState<Color>) => ({
+export const useColorStore = create<IColor>((set: SetState<IColor>, get: GetState<IColor>) => ({
   paintColor: '',
   setPaintColor: (selectedColor: string): void => {
     let { paintColor } = get()
@@ -20,9 +20,9 @@ export const useColorStore = create<Color>((set: SetState<Color>, get: GetState<
   }
 }))
 
-export const useGridStore = create<Grid>((set: SetState<Grid>, get: GetState<Grid>) => ({
-  x: 0,
-  y: 0,
+export const useGridStore = create<IGrid>((set: SetState<IGrid>, get: GetState<IGrid>) => ({
+  x: 48,
+  y: 48,
   setX: (clientX: number): void => {
     set(state => ({x: state.x = clientX}))
   },
