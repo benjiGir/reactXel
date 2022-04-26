@@ -2,7 +2,9 @@ import create, { GetState, SetState } from 'zustand'
 
 interface IColor {
   paintColor: string;
+  addedColor: string;
   setPaintColor: (selectedColor: string) => void;
+  setAddedColor: (selectedColor: string) => void;
 }
 
 interface IGrid {
@@ -14,6 +16,11 @@ interface IGrid {
 
 export const useColorStore = create<IColor>((set: SetState<IColor>, get: GetState<IColor>) => ({
   paintColor: '',
+  addedColor: '',
+  setAddedColor: (selectedColor: string): void => {
+    let { addedColor } = get()
+    set({ addedColor: addedColor = selectedColor})
+  },
   setPaintColor: (selectedColor: string): void => {
     let { paintColor } = get()
     set({ paintColor: paintColor = selectedColor})

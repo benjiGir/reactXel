@@ -1,3 +1,4 @@
+import Palette from '../ColorPalette/Palette'
 import Header from '../components/Header/Header'
 import DrawScene from '../DrawScene/DrawScene'
 
@@ -8,7 +9,8 @@ function Homepage(): JSX.Element {
         <Header></Header>
       </header>
       <main>
-        <DrawScene></DrawScene>
+        <Palette />
+        <DrawScene />
       </main>
     </>
   )

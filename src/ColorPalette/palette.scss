@@ -1,0 +1,39 @@
+.palette {
+  background-color: gray;
+  
+  .paletteHeader {
+    height: 1.5rem;
+    background-color: black;
+  }
+
+  .paletteContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    height: 100%;
+  }
+
+  .paletteColors {
+    height: 75%;
+    background-color: lightblue;
+  }
+
+  .paletteFooter {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10%;
+
+    .selectedColor {
+      height: 100%;
+      width: 40%;
+      background-color: lightcoral;
+    }
+
+    .btnAddColor {
+      height: 70%;
+      width: 20%;
+    }
+  }
+}
